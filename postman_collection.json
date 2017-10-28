@@ -1,405 +1,405 @@
 {
-	"info": {
-		"name": "File Storage",
-		"_postman_id": "557ffe16-c174-f408-4a0e-0aa0842b1043",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Get Info",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/user/{{username}}",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Download File",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/user/{{username}}/file/{{fileId}}",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}",
-						"file",
-						"{{fileId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Upload File",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file",
-							"src": "LICENSE"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{root}}/user/{{username}}/file",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}",
-						"file"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit File Name",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/user/{{username}}/file/{{fileId}}?name=NewFileName",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}",
-						"file",
-						"{{fileId}}"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "NewFileName",
-							"equals": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete File",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/user/{{username}}/file/{{fileId}}",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}",
-						"file",
-						"{{fileId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Sign Up",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/signup?username={{username}}&password={{password}}",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"signup"
-					],
-					"query": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"equals": true
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"equals": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit User",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/user/{{username}}?password={{password}}",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}"
-					],
-					"query": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"equals": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "saveHelperData",
-							"type": "any"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{root}}/user/{{username}}",
-					"host": [
-						"{{root}}"
-					],
-					"path": [
-						"user",
-						"{{username}}"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "name": "File Storage",
+    "_postman_id": "557ffe16-c174-f408-4a0e-0aa0842b1043",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Info",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/user/{{username}}",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Download File",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/user/{{username}}/file/{{fileId}}",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}",
+            "file",
+            "{{fileId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upload File",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "LICENSE"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{root}}/user/{{username}}/file",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}",
+            "file"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edit File Name",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/user/{{username}}/file/{{fileId}}?name=NewFileName",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}",
+            "file",
+            "{{fileId}}"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "NewFileName",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete File",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/user/{{username}}/file/{{fileId}}",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}",
+            "file",
+            "{{fileId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Sign Up",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/signup?username={{username}}&password={{password}}",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "signup"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "equals": true
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edit User",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/user/{{username}}?password={{password}}",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}"
+          ],
+          "query": [
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "type": "string"
+            },
+            {
+              "key": "saveHelperData",
+              "type": "any"
+            },
+            {
+              "key": "showPassword",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "{{root}}/user/{{username}}",
+          "host": [
+            "{{root}}"
+          ],
+          "path": [
+            "user",
+            "{{username}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }
