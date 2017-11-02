@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.UUID;
 
 @Repository
 public class FileRepositoryImpl implements FileRepository {
@@ -29,7 +30,7 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public String save(MultipartFile multipartFile) {
-        String path = "" + System.currentTimeMillis();
+        String path = UUID.randomUUID().toString();
         File fileToSave = new File(storageDirectory.getDirectory(), path);
         try {
             multipartFile.transferTo(fileToSave);
