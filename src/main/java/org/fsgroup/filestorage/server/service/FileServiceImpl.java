@@ -1,5 +1,6 @@
 package org.fsgroup.filestorage.server.service;
 
+import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.fsgroup.filestorage.server.exception.file.FileDownloadException;
 import org.fsgroup.filestorage.server.exception.file.FileNotFoundException;
@@ -17,6 +18,8 @@ import java.io.OutputStream;
 
 @Service
 public class FileServiceImpl implements FileService {
+
+    private static final Logger log = Logger.getLogger(FileServiceImpl.class);
 
     @Resource
     private UserService userService;
@@ -47,9 +50,13 @@ public class FileServiceImpl implements FileService {
         InputStream fileStream = fileRepository.find(file.path());
         try {
             IOUtils.copy(fileStream, responseStream);
-            fileStream.close();
         } catch (Exception e) {
             throw new FileDownloadException();
+        }
+        try {
+            fileStream.close();
+        } catch (Exception e) {
+            log.warn("Failed to close file stream", e);
         }
     }
 
