@@ -8,8 +8,11 @@ import javax.persistence.Table;
 @Table(name = "filestorage_uploadedfile")
 public class UploadedFile extends BaseEntity {
 
-    @Column(unique = false, nullable = false, updatable = true)
+    @Column(unique = false, nullable = false, updatable = false)
     private String name;
+
+    @Column(unique = false, nullable = false, updatable = false)
+    private String size;
 
     @Column(unique = true, nullable = false, updatable = false)
     private String path;
@@ -17,13 +20,10 @@ public class UploadedFile extends BaseEntity {
     public UploadedFile() {
     }
 
-    public UploadedFile(String name, String path) {
+    public UploadedFile(String name, String size, String path) {
         this.name = name;
+        this.size = size;
         this.path = path;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String path() {
@@ -32,5 +32,9 @@ public class UploadedFile extends BaseEntity {
 
     public String getName() {
         return name;
+    }
+
+    public String getSize() {
+        return size;
     }
 }

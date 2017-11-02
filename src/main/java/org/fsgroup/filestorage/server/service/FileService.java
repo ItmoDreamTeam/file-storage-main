@@ -12,7 +12,5 @@ public interface FileService {
 
     void download(int fileId, OutputStream responseStream);
 
-    void edit(int fileId, String name);
-
     void delete(String username, int fileId);
 }
