@@ -2,7 +2,9 @@ package org.fsgroup.filestorage.server.service;
 
 import org.fsgroup.filestorage.server.exception.user.UserNotFoundException;
 import org.fsgroup.filestorage.server.exception.user.UsernameOccupiedException;
+import org.fsgroup.filestorage.server.model.UploadedFile;
 import org.fsgroup.filestorage.server.model.User;
+import org.fsgroup.filestorage.server.repository.FileRepository;
 import org.fsgroup.filestorage.server.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private FileRepository fileRepository;
 
     @Override
     public User get(String username) {
@@ -43,6 +48,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(String username) {
         User user = get(username);
+        user.getFiles().stream()
+                .map(UploadedFile::path)
+                .forEach(fileRepository::delete);
         userRepository.delete(user);
     }
 }
