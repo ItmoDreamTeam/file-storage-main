@@ -2,6 +2,7 @@
   "info": {
     "name": "File Storage",
     "_postman_id": "557ffe16-c174-f408-4a0e-0aa0842b1043",
+    "description": "",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -142,8 +143,9 @@
           "formdata": [
             {
               "key": "file",
+              "description": "",
               "type": "file",
-              "src": "LICENSE"
+              "src": "landing.txt"
             }
           ]
         },
@@ -156,63 +158,6 @@
             "user",
             "{{username}}",
             "file"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Edit File Name",
-      "request": {
-        "auth": {
-          "type": "basic",
-          "basic": [
-            {
-              "key": "username",
-              "value": "{{username}}",
-              "type": "string"
-            },
-            {
-              "key": "password",
-              "value": "{{password}}",
-              "type": "string"
-            },
-            {
-              "key": "saveHelperData",
-              "type": "any"
-            },
-            {
-              "key": "showPassword",
-              "value": false,
-              "type": "boolean"
-            }
-          ]
-        },
-        "method": "PUT",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
-          }
-        ],
-        "body": {},
-        "url": {
-          "raw": "{{root}}/user/{{username}}/file/{{fileId}}?name=NewFileName",
-          "host": [
-            "{{root}}"
-          ],
-          "path": [
-            "user",
-            "{{username}}",
-            "file",
-            "{{fileId}}"
-          ],
-          "query": [
-            {
-              "key": "name",
-              "value": "NewFileName",
-              "equals": true
-            }
           ]
         }
       },
@@ -272,27 +217,36 @@
       "name": "Sign Up",
       "request": {
         "method": "POST",
-        "header": [],
-        "body": {},
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
         "url": {
-          "raw": "{{root}}/signup?username={{username}}&password={{password}}",
+          "raw": "{{root}}/signup",
           "host": [
             "{{root}}"
           ],
           "path": [
             "signup"
-          ],
-          "query": [
-            {
-              "key": "username",
-              "value": "{{username}}",
-              "equals": true
-            },
-            {
-              "key": "password",
-              "value": "{{password}}",
-              "equals": true
-            }
           ]
         }
       },
@@ -330,24 +284,31 @@
           {
             "key": "Authorization",
             "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
           }
         ],
-        "body": {},
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "password",
+              "value": "{{password}}",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
         "url": {
-          "raw": "{{root}}/user/{{username}}?password={{password}}",
+          "raw": "{{root}}/user/{{username}}",
           "host": [
             "{{root}}"
           ],
           "path": [
             "user",
             "{{username}}"
-          ],
-          "query": [
-            {
-              "key": "password",
-              "value": "{{password}}",
-              "equals": true
-            }
           ]
         }
       },
