@@ -2,7 +2,7 @@ package org.fsgroup.filestorage.server.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class FileStorageException extends RuntimeException {
+public abstract class FileStorageException extends RuntimeException {
 
     private final ErrorMessage errorMessage;
 

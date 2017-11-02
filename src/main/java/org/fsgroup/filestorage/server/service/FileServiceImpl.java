@@ -1,5 +1,6 @@
 package org.fsgroup.filestorage.server.service;
 
+import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.fsgroup.filestorage.server.exception.file.FileDownloadException;
 import org.fsgroup.filestorage.server.exception.file.FileNotFoundException;
@@ -18,8 +19,7 @@ import java.io.OutputStream;
 @Service
 public class FileServiceImpl implements FileService {
 
-    @Resource
-    private PropertyValidator propertyValidator;
+    private static final Logger log = Logger.getLogger(FileServiceImpl.class);
 
     @Resource
     private UserService userService;
@@ -37,7 +37,8 @@ public class FileServiceImpl implements FileService {
     public void upload(String username, MultipartFile multipartFile) {
         User user = userService.get(username);
         String path = fileRepository.save(multipartFile);
-        UploadedFile file = new UploadedFile(multipartFile.getOriginalFilename(), path);
+        UploadedFile file = new UploadedFile(multipartFile.getOriginalFilename(),
+                formatFileSize(multipartFile.getSize()), path);
         uploadedFileRepository.save(file);
         user.addFile(file);
         userRepository.save(user);
@@ -49,18 +50,14 @@ public class FileServiceImpl implements FileService {
         InputStream fileStream = fileRepository.find(file.path());
         try {
             IOUtils.copy(fileStream, responseStream);
-            fileStream.close();
         } catch (Exception e) {
             throw new FileDownloadException();
         }
-    }
-
-    @Override
-    public void edit(int fileId, String name) {
-        propertyValidator.validateFilename(name);
-        UploadedFile file = get(fileId);
-        file.setName(name);
-        uploadedFileRepository.save(file);
+        try {
+            fileStream.close();
+        } catch (Exception e) {
+            log.warn("Failed to close file stream", e);
+        }
     }
 
     @Override
@@ -77,5 +74,15 @@ public class FileServiceImpl implements FileService {
         if (!uploadedFileRepository.exists(fileId))
             throw new FileNotFoundException(fileId);
         return uploadedFileRepository.findOne(fileId);
+    }
+
+    private static String formatFileSize(long sizeInBytes) {
+        if (sizeInBytes < 1000) {
+            return String.format("%d B", sizeInBytes);
+        } else if (sizeInBytes < 1000000) {
+            return String.format("%d KB", Math.round((double) sizeInBytes / 1000));
+        } else {
+            return String.format("%d MB", Math.round((double) sizeInBytes / 1000000));
+        }
     }
 }

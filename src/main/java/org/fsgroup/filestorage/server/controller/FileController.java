@@ -35,12 +35,6 @@ public class FileController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/{fileId}")
-    public ResponseEntity edit(@PathVariable int fileId, @RequestParam String name) {
-        fileService.edit(fileId, name);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
     @DeleteMapping("/{fileId}")
     public ResponseEntity delete(@PathVariable String username, @PathVariable int fileId) {
         fileService.delete(username, fileId);
