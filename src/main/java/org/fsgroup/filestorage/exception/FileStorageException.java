@@ -2,9 +2,9 @@ package org.fsgroup.filestorage.exception;
 
 import org.springframework.http.HttpStatus;
 
-public abstract class FileStorageException extends RuntimeException {
+public class FileStorageException extends RuntimeException {
 
-    private final ErrorMessage errorMessage;
+    private final ErrorResponse errorResponse;
 
     public FileStorageException(String message) {
         this(HttpStatus.BAD_REQUEST, message);
@@ -12,10 +12,10 @@ public abstract class FileStorageException extends RuntimeException {
 
     public FileStorageException(HttpStatus httpStatus, String message) {
         super(message);
-        errorMessage = new ErrorMessage(httpStatus, message);
+        errorResponse = new ErrorResponse(httpStatus, message, message);
     }
 
-    public ErrorMessage getErrorMessage() {
-        return errorMessage;
+    public ErrorResponse getErrorResponse() {
+        return errorResponse;
     }
 }

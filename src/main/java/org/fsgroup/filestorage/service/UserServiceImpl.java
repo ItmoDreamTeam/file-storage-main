@@ -6,6 +6,7 @@ import org.fsgroup.filestorage.model.UploadedFile;
 import org.fsgroup.filestorage.model.User;
 import org.fsgroup.filestorage.repository.FileRepository;
 import org.fsgroup.filestorage.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +23,9 @@ public class UserServiceImpl implements UserService {
     @Resource
     private FileRepository fileRepository;
 
+    @Resource
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public User get(String username) {
         if (!userRepository.exists(username))
@@ -34,14 +38,14 @@ public class UserServiceImpl implements UserService {
         propertyValidator.validateUsername(username);
         if (userRepository.exists(username))
             throw new UsernameOccupiedException(username);
-        User user = new User(username, password);
+        User user = new User(username, passwordEncoder.encode(password));
         userRepository.save(user);
     }
 
     @Override
     public void edit(String username, String password) {
         User user = get(username);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
     }
 

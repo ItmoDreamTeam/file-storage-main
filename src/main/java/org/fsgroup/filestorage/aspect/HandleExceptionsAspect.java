@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class HandleExceptionsAspect {
 
-    @Around("execution(org.springframework.http.ResponseEntity org.fsgroup.filestorage.server.controller.*.*(..))")
+    @Around("execution(org.springframework.http.ResponseEntity org.fsgroup.filestorage.controller.*.*(..))")
     public ResponseEntity handleException(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             return (ResponseEntity) joinPoint.proceed();
         } catch (FileStorageException e) {
-            return new ResponseEntity<>(e.getErrorMessage(), e.getErrorMessage().getError());
+            return new ResponseEntity<>(e.getErrorResponse(), e.getErrorResponse().httpStatus());
         }
     }
 }

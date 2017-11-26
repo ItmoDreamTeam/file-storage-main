@@ -10,7 +10,7 @@ public interface FileService {
 
     void upload(String username, MultipartFile multipartFile);
 
-    void download(int fileId, OutputStream responseStream);
+    void download(String username, int id, OutputStream responseStream);
 
-    void delete(String username, int fileId);
+    void delete(String username, int id);
 }
