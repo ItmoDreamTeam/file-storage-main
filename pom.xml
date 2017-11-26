@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.fsgroup</groupId>
-    <artifactId>filestorage.server</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <artifactId>filestorage</artifactId>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -23,7 +23,6 @@
     </parent>
 
     <dependencies>
-        <!--Spring Boot + Web + Data-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -33,7 +32,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!--Spring Security-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -43,7 +41,6 @@
             <artifactId>spring-security-web</artifactId>
         </dependency>
 
-        <!--Postgres Driver-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
