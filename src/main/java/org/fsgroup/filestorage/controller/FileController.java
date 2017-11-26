@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/user/{username}/file")
+@RequestMapping("/api/user/{username}/file")
 @CrossOrigin
 public class FileController {
 

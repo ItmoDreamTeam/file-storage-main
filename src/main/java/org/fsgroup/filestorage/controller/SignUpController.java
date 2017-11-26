@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/signup")
+@RequestMapping("/api/signup")
 @CrossOrigin
 public class SignUpController {
 
