@@ -1,0 +1,376 @@
+{
+  "info": {
+    "name": "File Storage",
+    "_postman_id": "557ffe16-c174-f408-4a0e-0aa0842b1043",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Profile",
+      "description": "",
+      "item": [
+        {
+          "name": "Sign Up",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{root}}/api/signup",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                },
+                {
+                  "key": "saveHelperData",
+                  "type": "any"
+                },
+                {
+                  "key": "showPassword",
+                  "value": false,
+                  "type": "boolean"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{root}}/api/profile",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edit",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                },
+                {
+                  "key": "saveHelperData",
+                  "type": "any"
+                },
+                {
+                  "key": "showPassword",
+                  "value": false,
+                  "type": "boolean"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{root}}/api/profile",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                },
+                {
+                  "key": "saveHelperData",
+                  "type": "any"
+                },
+                {
+                  "key": "showPassword",
+                  "value": false,
+                  "type": "boolean"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{root}}/api/profile",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "description": "",
+      "item": [
+        {
+          "name": "Upload",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                },
+                {
+                  "key": "saveHelperData",
+                  "type": "any"
+                },
+                {
+                  "key": "showPassword",
+                  "value": false,
+                  "type": "boolean"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "description": "",
+                  "type": "file",
+                  "src": "3f6Z.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{root}}/api/files",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "files"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                },
+                {
+                  "key": "saveHelperData",
+                  "type": "any"
+                },
+                {
+                  "key": "showPassword",
+                  "value": false,
+                  "type": "boolean"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{root}}/api/files/{{fileId}}",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "files",
+                "{{fileId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                },
+                {
+                  "key": "saveHelperData",
+                  "type": "any"
+                },
+                {
+                  "key": "showPassword",
+                  "value": false,
+                  "type": "boolean"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic UG9tZWdyZW5hdGU6Y2FzdGxl"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{root}}/api/files/{{fileId}}",
+              "host": [
+                "{{root}}"
+              ],
+              "path": [
+                "api",
+                "files",
+                "{{fileId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
