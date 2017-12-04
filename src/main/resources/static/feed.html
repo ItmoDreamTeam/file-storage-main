@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="feed-style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <title>File Storage - Feed</title>
+</head>
+<body>
+<div class="top">
+    <i class="material-icons icon1">work</i>
+    <a href="index.html"> <i class="material-icons icon2" onclick="exit()">close</i></a>
+</div>
+<div class="left">
+    <div class="row">
+        <label id="login" class="login"></label>
+    </div>
+    <div class="row">
+        <a class="waves-effect waves-light btn-large change" onclick="openp()" id="edit">edit</a>
+    </div>
+    <div class="row">
+        <a class="waves-effect waves-light btn-large change" id="upload" onclick="closeupload()">upload</a>
+    </div>
+    <div id="changefield">
+        <div class="row changefield">
+            <div class="input-field col s12 changefield">
+                <input id="password" type="password" class="validate changefield">
+                <label for="password" class="changefield">New Password</label>
+            </div>
+        </div>
+        <div class="row change">
+            <a class="waves-effect waves-light btn-large changefield" onclick="savepassword()">Save</a>
+        </div>
+        <div class="row change">
+            <a class="waves-effect waves-light btn-large changefield" onclick="openp()">close</a>
+        </div>
+    </div>
+
+    <div id="upform">
+
+        <form action="#" id="file-form">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" id="myfile">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <a class="waves-effect waves-light btn-large change" id="sendphoto" onclick="sendfile()">upload</a>
+        </div>
+        <div class="row change">
+            <a class="waves-effect waves-light btn-large changefield" onclick="closeupload()">close</a>
+        </div>
+    </div>
+</div>
+<div class="right" id="right">
+    <div class="row">
+        <label class="number" id="number"></label>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="materialize.js"></script>
+<script src="init.js"></script>
+<script src="feed.js"></script>
+</body>
+</html>

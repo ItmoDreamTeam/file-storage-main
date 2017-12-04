@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <title>File Storage</title>
 </head>
 <body>
-<div>Welcome to File Storage!</div>
+<div class="left">
+    <i class="material-icons icon">work</i>
+</div>
+<div class="right">
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Login</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+        </div>
+    </div>
+    <a class="waves-effect waves-light btn-large" onclick="go()">Войти</a>
+    <a class="waves-effect waves-light btn-large disabled">Регистрация</a>
+</div>
+<script src="auth.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="materialize.js"></script>
+<script src="init.js"></script>
 </body>
 </html>
