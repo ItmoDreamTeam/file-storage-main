@@ -12,6 +12,7 @@ import org.fsgroup.filestorage.repository.UploadedFileRepository;
 import org.fsgroup.filestorage.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 @Service
+@Transactional
 public class FileServiceImpl implements FileService {
 
     private static final Logger log = Logger.getLogger(FileServiceImpl.class);

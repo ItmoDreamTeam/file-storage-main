@@ -1,4 +1,4 @@
-package org.fsgroup.filestorage.aspect;
+package org.fsgroup.filestorage.controller;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class HandleExceptionsAspect {
+public class ExceptionsHandler {
 
     @Around("execution(org.springframework.http.ResponseEntity org.fsgroup.filestorage.controller.*.*(..))")
     public ResponseEntity handleException(ProceedingJoinPoint joinPoint) throws Throwable {
