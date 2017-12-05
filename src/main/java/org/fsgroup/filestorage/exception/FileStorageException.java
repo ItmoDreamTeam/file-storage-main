@@ -12,7 +12,7 @@ public class FileStorageException extends RuntimeException {
 
     public FileStorageException(HttpStatus httpStatus, String message) {
         super(message);
-        errorResponse = new ErrorResponse(httpStatus, message, message);
+        errorResponse = new ErrorResponse(httpStatus, message);
     }
 
     public ErrorResponse getErrorResponse() {

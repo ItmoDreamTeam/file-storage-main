@@ -13,11 +13,11 @@ import javax.annotation.Resource;
 public class SignUpController {
 
     @Resource
-    private UserService userService;
+    private UserService service;
 
     @PostMapping
     public ResponseEntity signUp(@RequestParam String username, @RequestParam String password) {
-        userService.signUp(username, password);
+        service.signUp(username, password);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 }

@@ -1,7 +1,6 @@
 package org.fsgroup.filestorage.service;
 
-import org.fsgroup.filestorage.exception.user.UserNotFoundException;
-import org.fsgroup.filestorage.exception.user.UsernameOccupiedException;
+import org.fsgroup.filestorage.exception.FileStorageException;
 import org.fsgroup.filestorage.model.UploadedFile;
 import org.fsgroup.filestorage.model.User;
 import org.fsgroup.filestorage.repository.FileRepository;
@@ -30,16 +29,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(String username) {
-        if (!userRepository.exists(username))
-            throw new UserNotFoundException(username);
+        if (!userRepository.existsByUsername(username))
+            throw new FileStorageException(String.format("Username %s not found", username));
         return userRepository.findByUsername(username);
     }
 
     @Override
     public void signUp(String username, String password) {
         propertyValidator.validateUsername(username);
-        if (userRepository.exists(username))
-            throw new UsernameOccupiedException(username);
+        propertyValidator.validatePassword(password);
+        if (userRepository.existsByUsername(username))
+            throw new FileStorageException(String.format("Username %s occupied", username));
         User user = new User(username, passwordEncoder.encode(password));
         userRepository.save(user);
     }
@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void edit(String username, String password) {
         User user = get(username);
+        propertyValidator.validatePassword(password);
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
     }

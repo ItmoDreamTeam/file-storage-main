@@ -15,22 +15,22 @@ import javax.annotation.Resource;
 public class UserController {
 
     @Resource
-    private UserService userService;
+    private UserService service;
 
     @GetMapping
     public ResponseEntity<User> get(Authentication auth) {
-        return new ResponseEntity<>(userService.get(auth.getName()), HttpStatus.OK);
+        return new ResponseEntity<>(service.get(auth.getName()), HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity edit(Authentication auth, @RequestParam String password) {
-        userService.edit(auth.getName(), password);
+        service.edit(auth.getName(), password);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping
     public ResponseEntity delete(Authentication auth) {
-        userService.delete(auth.getName());
+        service.delete(auth.getName());
         return new ResponseEntity(HttpStatus.OK);
     }
 }

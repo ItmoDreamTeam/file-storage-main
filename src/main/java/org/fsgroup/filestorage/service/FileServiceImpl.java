@@ -3,8 +3,6 @@ package org.fsgroup.filestorage.service;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.fsgroup.filestorage.exception.FileStorageException;
-import org.fsgroup.filestorage.exception.file.FileDownloadException;
-import org.fsgroup.filestorage.exception.file.FileNotFoundException;
 import org.fsgroup.filestorage.model.UploadedFile;
 import org.fsgroup.filestorage.model.User;
 import org.fsgroup.filestorage.repository.FileRepository;
@@ -55,7 +53,7 @@ public class FileServiceImpl implements FileService {
         try {
             IOUtils.copy(fileStream, responseStream);
         } catch (Exception e) {
-            throw new FileDownloadException();
+            throw new FileStorageException("Error while downloading file");
         }
         try {
             fileStream.close();
@@ -76,7 +74,7 @@ public class FileServiceImpl implements FileService {
 
     private UploadedFile get(String username, int id) {
         if (!uploadedFileRepository.exists(id))
-            throw new FileNotFoundException(id);
+            throw new FileStorageException("File not found");
         if (!userService.get(username).hasFile(id))
             throw new FileStorageException(HttpStatus.FORBIDDEN, "You are not allowed to access this file");
         return uploadedFileRepository.findOne(id);
