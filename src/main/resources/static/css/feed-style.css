@@ -1,3 +1,7 @@
+.newspan {
+    color: #000;
+}
+
 .top {
     width: 100%;
     background-color: #62bcfa;
@@ -7,7 +11,7 @@
     padding: 5px 5px 5px 15px;
 }
 
-.left {
+.leftside {
     margin: 0px 0px 0px 0px;
     float: left;
     width: 20%;
@@ -28,7 +32,7 @@
     float: right;
 }
 
-.right {
+.rightside {
     margin-right: 0px;
     float: right;
     margin-bottom: 0px;
@@ -76,11 +80,12 @@ a {
     font-size: 14pt;
     margin-top: 15px;
     float: left;
+    text-align: center;
+    width: 100%;
 }
 
-.number {
-    color: black;
-    font-size: 14pt;
-    margin-top: 15px;
-    float: left;
+#download {
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 80% !important;
 }

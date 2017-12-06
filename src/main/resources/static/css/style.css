@@ -1,4 +1,4 @@
-.left {
+.leftside {
     margin: 0px 0px 0px 0px;
     float: left;
     width: 70%;
@@ -14,7 +14,7 @@
     height: 50vh;
 }
 
-.right {
+.rightside {
     margin-right: 0px;
     float: right;
     margin-bottom: 0px;
@@ -30,15 +30,19 @@ body {
 }
 
 @media (max-width: 900px) {
-    .left {
+    .leftside {
         width: 20%;
     }
 
-    .right {
+    .rightside {
         width: 80%;
     }
 }
 
 html {
     overflow-x: hidden;
+}
+
+#registrationform {
+    display: none;
 }
