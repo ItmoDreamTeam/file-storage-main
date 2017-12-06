@@ -74,7 +74,7 @@ public class FileServiceImpl implements FileService {
 
     private UploadedFile get(String username, int id) {
         if (!uploadedFileRepository.exists(id))
-            throw new FileStorageException("File not found");
+            throw new FileStorageException(HttpStatus.NOT_FOUND, "File not found");
         if (!userService.get(username).hasFile(id))
             throw new FileStorageException(HttpStatus.FORBIDDEN, "You are not allowed to access this file");
         return uploadedFileRepository.findOne(id);

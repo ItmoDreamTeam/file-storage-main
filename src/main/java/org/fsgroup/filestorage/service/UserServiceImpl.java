@@ -5,6 +5,7 @@ import org.fsgroup.filestorage.model.UploadedFile;
 import org.fsgroup.filestorage.model.User;
 import org.fsgroup.filestorage.repository.FileRepository;
 import org.fsgroup.filestorage.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User get(String username) {
         if (!userRepository.existsByUsername(username))
-            throw new FileStorageException(String.format("Username %s not found", username));
+            throw new FileStorageException(HttpStatus.NOT_FOUND, String.format("Username %s not found", username));
         return userRepository.findByUsername(username);
     }
 
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
         propertyValidator.validateUsername(username);
         propertyValidator.validatePassword(password);
         if (userRepository.existsByUsername(username))
-            throw new FileStorageException(String.format("Username %s occupied", username));
+            throw new FileStorageException(HttpStatus.CONFLICT, String.format("Username %s occupied", username));
         User user = new User(username, passwordEncoder.encode(password));
         userRepository.save(user);
     }
