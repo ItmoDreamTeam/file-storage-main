@@ -1,5 +1,3 @@
-const Start_Page = URL_ROOT;
-
 function CheckForAuthorization() {
     if (sessionStorage.getItem("line") === null) {
         window.open('index.html', '_self', false);
@@ -10,8 +8,6 @@ function CheckForAuthorization() {
     }
 }
 
-CheckForAuthorization();
-
 function CreateList(name, id) {
     var input = document.createElement('li');
     input.setAttribute("id", id);
@@ -20,14 +16,11 @@ function CreateList(name, id) {
     var download = document.createElement('a');
     download.setAttribute("class", "waves-effect waves-light btn");
     download.setAttribute('id', 'download');
-    //var icon = document.createElement('i');
-    //icon.setAttribute('class', 'material-icons');
-    // icon.innerHTML= 'add';
     input.innerHTML = name;
     download.innerHTML = "download";
+    download.setAttribute('onclick', 'DownloadImage(' + id + ')');
     parent.appendChild(input);
     input.appendChild(download);
-    //download.appendChild(icon);
 }
 
 function GetImageListFromServer() {
@@ -42,6 +35,7 @@ function GetImageListFromServer() {
         },
         complete: function (xhr) {
             var pics = JSON.parse(xhr.responseText);
+            console.log(pics);
             for (var i = 0; i < pics.files.length; i++) {
                 CreateList(pics.files[i].name, pics.files[i].id);
             }
@@ -49,8 +43,6 @@ function GetImageListFromServer() {
         }
     });
 }
-
-GetImageListFromServer();
 
 function OpenAndClosePasswordChangeForm() {
     if (document.getElementById('changefield').style.display === 'block') {
@@ -131,5 +123,8 @@ function OpenAndCloseUploadImageForm() {
 
 function ExitFromAccount() {
     sessionStorage.clear();
-    window.open(Start_Page, '_self', false);
+    location.reload();
 }
+
+CheckForAuthorization();
+GetImageListFromServer();

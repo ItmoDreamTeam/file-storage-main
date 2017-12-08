@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/files")
-@CrossOrigin
 public class FileController {
 
     @Resource
