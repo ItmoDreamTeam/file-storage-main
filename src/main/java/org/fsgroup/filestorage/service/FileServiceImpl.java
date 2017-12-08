@@ -3,8 +3,6 @@ package org.fsgroup.filestorage.service;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.fsgroup.filestorage.exception.FileStorageException;
-import org.fsgroup.filestorage.exception.file.FileDownloadException;
-import org.fsgroup.filestorage.exception.file.FileNotFoundException;
 import org.fsgroup.filestorage.model.UploadedFile;
 import org.fsgroup.filestorage.model.User;
 import org.fsgroup.filestorage.repository.FileRepository;
@@ -12,6 +10,7 @@ import org.fsgroup.filestorage.repository.UploadedFileRepository;
 import org.fsgroup.filestorage.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -19,6 +18,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 @Service
+@Transactional
 public class FileServiceImpl implements FileService {
 
     private static final Logger log = Logger.getLogger(FileServiceImpl.class);
@@ -53,7 +53,7 @@ public class FileServiceImpl implements FileService {
         try {
             IOUtils.copy(fileStream, responseStream);
         } catch (Exception e) {
-            throw new FileDownloadException();
+            throw new FileStorageException("Error while downloading file");
         }
         try {
             fileStream.close();
@@ -74,7 +74,7 @@ public class FileServiceImpl implements FileService {
 
     private UploadedFile get(String username, int id) {
         if (!uploadedFileRepository.exists(id))
-            throw new FileNotFoundException(id);
+            throw new FileStorageException(HttpStatus.NOT_FOUND, "File not found");
         if (!userService.get(username).hasFile(id))
             throw new FileStorageException(HttpStatus.FORBIDDEN, "You are not allowed to access this file");
         return uploadedFileRepository.findOne(id);

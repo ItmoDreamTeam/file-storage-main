@@ -1,8 +1,7 @@
 package org.fsgroup.filestorage.repository;
 
 import org.apache.log4j.Logger;
-import org.fsgroup.filestorage.exception.file.FileDownloadException;
-import org.fsgroup.filestorage.exception.file.FileUploadException;
+import org.fsgroup.filestorage.exception.FileStorageException;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,7 +26,7 @@ public class FileRepositoryImpl implements FileRepository {
             return new FileInputStream(file);
         } catch (Exception e) {
             log.warn("Failed to retrieve file", e);
-            throw new FileDownloadException();
+            throw new FileStorageException("Error while downloading file");
         }
     }
 
@@ -39,7 +38,7 @@ public class FileRepositoryImpl implements FileRepository {
             multipartFile.transferTo(fileToSave);
         } catch (Exception e) {
             log.warn("Failed to save file", e);
-            throw new FileUploadException();
+            throw new FileStorageException("Error while uploading file");
         }
         return path;
     }

@@ -6,12 +6,10 @@ public class ErrorResponse {
 
     private final HttpStatus httpStatus;
     private final String message;
-    private final String developerMessage;
 
-    public ErrorResponse(HttpStatus httpStatus, String message, String developerMessage) {
+    public ErrorResponse(HttpStatus httpStatus, String message) {
         this.httpStatus = httpStatus;
         this.message = message;
-        this.developerMessage = developerMessage;
     }
 
     public HttpStatus httpStatus() {
@@ -28,9 +26,5 @@ public class ErrorResponse {
 
     public String getMessage() {
         return message;
-    }
-
-    public String getDeveloperMessage() {
-        return developerMessage;
     }
 }

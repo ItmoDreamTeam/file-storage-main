@@ -1,9 +1,7 @@
 package org.fsgroup.filestorage.service;
 
 import org.fsgroup.filestorage.model.User;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface UserService {
 
     User get(String username);
