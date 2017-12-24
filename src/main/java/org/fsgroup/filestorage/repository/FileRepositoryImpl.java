@@ -1,7 +1,8 @@
 package org.fsgroup.filestorage.repository;
 
-import org.apache.log4j.Logger;
 import org.fsgroup.filestorage.exception.FileStorageException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Repository
 public class FileRepositoryImpl implements FileRepository {
 
-    private static final Logger log = Logger.getLogger(FileRepositoryImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(FileRepositoryImpl.class);
 
     @Resource
     private StorageDirectory storageDirectory;

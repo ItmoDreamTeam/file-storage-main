@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/api/profile")
+@CrossOrigin
 public class UserController {
 
     @Resource
