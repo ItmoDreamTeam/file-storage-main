@@ -1,6 +1,5 @@
 package org.fsgroup.filestorage.service;
 
-import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.fsgroup.filestorage.exception.FileStorageException;
 import org.fsgroup.filestorage.model.UploadedFile;
@@ -8,6 +7,8 @@ import org.fsgroup.filestorage.model.User;
 import org.fsgroup.filestorage.repository.FileRepository;
 import org.fsgroup.filestorage.repository.UploadedFileRepository;
 import org.fsgroup.filestorage.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ import java.io.OutputStream;
 @Transactional
 public class FileServiceImpl implements FileService {
 
-    private static final Logger log = Logger.getLogger(FileServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(FileServiceImpl.class);
 
     @Resource
     private UserService userService;

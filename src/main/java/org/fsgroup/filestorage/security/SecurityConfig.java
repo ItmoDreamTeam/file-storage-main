@@ -16,8 +16,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .cors()
 
-                .authorizeRequests()
+                .and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/signup").permitAll()
 
                 .antMatchers("/api/profile", "/api/files/*").authenticated()
